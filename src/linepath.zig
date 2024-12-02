@@ -9,6 +9,8 @@ const rand = @import("rand.zig");
 const MAX_LINE_COUNT = 5;
 const MAX_THICKNESS = 3.0;
 const MAX_LIFE_SPAN = 20.0;
+const MAX_LINE_LENGTH = 50.0;
+
 pub const LinePath = struct {
     pos: rl.Vector2,
     speed: rl.Vector2,
@@ -45,8 +47,8 @@ pub const LinePath = struct {
     pub fn update(self: *LinePath) void {
         self.timer += 1;
         if (self.timer < self.lifeSpan) {
-            self.pos.x += self.speed.x + rand.float32() * 50.0 - 25.0;
-            self.pos.y += self.speed.y + rand.float32() * 50.0 - 25.0;
+            self.pos.x += self.speed.x + rand.float32() * MAX_LINE_LENGTH - 25.0;
+            self.pos.y += self.speed.y + rand.float32() * MAX_LINE_LENGTH - 25.0;
             pushPoints(self, self.pos);
         } else {
             if (self.count > 1) {

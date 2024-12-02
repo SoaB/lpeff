@@ -30,6 +30,8 @@ pub const Effect = struct {
         }
     }
     pub fn draw() void {
+        const pos: rl.Vector2 = rl.GetMousePosition();
+        rl.DrawCircleV(pos, 5.0, rl.LIGHTGRAY);
         for (0..MAX_NUM_LINES) |i| {
             linePaths[i].draw();
         }
